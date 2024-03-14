@@ -4,8 +4,10 @@ import alessia.entities.Customer;
 import alessia.entities.Order;
 import alessia.entities.Product;
 import com.github.javafaker.Faker;
+import jdk.jfr.Category;
 
 import java.awt.color.ProfileDataException;
+import java.rmi.MarshalledObject;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Supplier;
@@ -137,6 +139,14 @@ public class Application {
         System.out.println("-------------------------------ESERCIZIO 4------------------------------------------------");
 
         Double averagePrices = wareHouse.stream().mapToDouble(Product::getPrice).average().getAsDouble();
-        System.out.println(averagePrices);
+        System.out.println(averagePrices + "€");
 
+        System.out.println("-------------------------------ESERCIZIO 5------------------------------------------------");
+
+        Map<String, List<Product>> totalPriceForCategory = wareHouse.stream().collect(Collectors.groupingBy(Product::getCategory));Collectors.summingDouble(Product::getPrice);
+        totalPriceForCategory.forEach((category, totalPrice)->{
+            System.out.println("Category: " + category+ ", Total Sum: " + totalPrice + "€");
+       });
+
+        System.out.println("-------------------------------ESERCIZIO 6------------------------------------------------");
     }}
