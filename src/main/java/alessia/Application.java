@@ -30,6 +30,21 @@ public class Application {
         Product product10 = new Product("Bon Rye", "Wine", 13.50);
 
 
+        //CREAZIONE WAREHOUSE
+
+        List<Product> wareHouse = new ArrayList<>();
+        wareHouse.add(product1);
+        wareHouse.add(product2);
+        wareHouse.add(product3);
+        wareHouse.add(product4);
+        wareHouse.add(product5);
+        wareHouse.add(product6);
+        wareHouse.add(product7);
+        wareHouse.add(product8);
+        wareHouse.add(product9);
+        wareHouse.add(product10);
+
+
         // CREAZIONE CLIENTI
 
         Supplier<Customer> customerSupplier = () -> {
@@ -112,5 +127,12 @@ public class Application {
         });
 
 
-        System.out.println("-------------------------------ESERCIZIO 2------------------------------------------------");
+        System.out.println("-------------------------------ESERCIZIO 3------------------------------------------------");
+
+        List<Product> theMostExpensiveItems = wareHouse.stream().sorted(Comparator.comparingDouble(Product::getPrice).reversed())
+                .limit(5)
+                .toList();
+        System.out.println(theMostExpensiveItems);
+
+
     }}
