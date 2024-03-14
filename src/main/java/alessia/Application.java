@@ -101,4 +101,16 @@ public class Application {
         });
 
         System.out.println("-------------------------------ESERCIZIO 2------------------------------------------------");
+
+        Map<Customer, Double> totalSumForEachCustomer = listOfOrders.stream()
+                .collect(Collectors.groupingBy(Order::getCustomer,
+                        Collectors.summingDouble(order -> order.getProducts().stream()
+                                .mapToDouble(Product::getPrice).sum())));
+
+        totalSumForEachCustomer.forEach((customer, totalSum) -> {
+            System.out.println("Customer: " + customer.getName() + ", Total Shopping Cart: " + totalSum + "€");
+        });
+
+
+        System.out.println("-------------------------------ESERCIZIO 2------------------------------------------------");
     }}
