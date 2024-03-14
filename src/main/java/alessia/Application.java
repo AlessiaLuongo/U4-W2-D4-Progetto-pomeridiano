@@ -134,5 +134,9 @@ public class Application {
                 .toList();
         System.out.println(theMostExpensiveItems);
 
+        System.out.println("-------------------------------ESERCIZIO 4------------------------------------------------");
+
+        Double averagePrices = wareHouse.stream().mapToDouble(Product::getPrice).average().getAsDouble();
+        System.out.println(averagePrices);
 
     }}
